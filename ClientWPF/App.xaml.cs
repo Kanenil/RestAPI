@@ -17,7 +17,7 @@ namespace ClientWPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = new MainWindow(new UserViewModel());
+            var mainWindow = new MainWindow(new LoginViewModel());
             mainWindow.Show();
         }
     }

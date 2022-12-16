@@ -6,7 +6,8 @@
         xmlns:cmd="clr-namespace:ClientWPF.Commands"
         xmlns:local="clr-namespace:ClientWPF.ViewModels" 
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        d:DataContext="{d:DesignInstance Type=local:UserViewModel}"
+        xmlns:cntrl="clr-namespace:ClientWPF.Views.Controls"
+        d:DataContext="{d:DesignInstance Type=local:LoginViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="380"
         WindowStyle="None" ResizeMode="NoResize"
@@ -29,39 +30,43 @@
         </Border>
 
         <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right"
+                    Margin="5,5">
             <iconPacks:PackIconMaterial Kind="ExitToApp" 
-                                                VerticalAlignment="Center" 
-                                                HorizontalAlignment="Center" 
-                                                Foreground="White"/>
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Foreground="Black"
+                                        MouseDown="exit_MouseDown"
+                                        MouseEnter="exit_MouseEnter"
+                                        MouseLeave="exit_MouseLeave"/>
 
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center" Grid.Row="1">
             <Image Source="Images/cart.png" Width="100"/>
             <TextBlock Text="Rest API"
-                           FontFamily="Fonts/#Montserrat"
-                           FontWeight="Light"
-                           Foreground="White"
-                           HorizontalAlignment="Center"
-                           FontSize="22"/>
+                       FontFamily="Fonts/#Montserrat"
+                       FontWeight="Light"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       FontSize="22"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2">
             <StackPanel Orientation="Horizontal">
                 <TextBox FontFamily="Fonts/#Montserrat"
-                             FontWeight="Light"
-                             Text="Username"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             Foreground="White"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Width="235"
-                             HorizontalContentAlignment="Left"
-                             Opacity="0.5"
-                             Height="25"
-                             Margin="63 0 0 0"/>
+                         FontWeight="Light"
+                         Text="{Binding Path=Email,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="20"
+                         HorizontalAlignment="Center"
+                         Foreground="White"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Width="235"
+                         HorizontalContentAlignment="Left"
+                         Opacity="0.5"
+                         Height="25"
+                         Margin="63 0 0 0"/>
                 <iconPacks:PackIconMaterial Kind="Account" 
                                                 VerticalAlignment="Center" 
                                                 HorizontalAlignment="Center" 
@@ -73,9 +78,9 @@
                     Opacity="0.5"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                <PasswordBox FontFamily="Fonts/#Montserrat"
+                <cntrl:BindablePasswordBox FontFamily="Fonts/#Montserrat"
                              FontWeight="Light"
-                             Password="Password"
+                             Password="{Binding Path=Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="White"
@@ -98,8 +103,8 @@
 
 
             <StackPanel Orientation="Horizontal" Margin="0 50 0 0">
-                <Button Content="LOGIN" Width="100" Height="40" Margin="60 0 60 0"/>
-                <Button Content="REGISTER" Width="100" Height="40"/>
+                <Button Style="{StaticResource customButton}" Content="LOGIN" Width="100" Height="40" Margin="60 0 60 0"/>
+                <Button Style="{StaticResource customButton}" Content="REGISTER" Width="100" Height="40"/>
             </StackPanel>
         </StackPanel>
 

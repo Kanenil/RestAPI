@@ -1,4 +1,5 @@
 ﻿using ClientWPF.ViewModels;
+using MahApps.Metro.IconPacks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ClientWPF.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(UserViewModel model)
+        public MainWindow(LoginViewModel model)
         {
             InitializeComponent();
             this.DataContext= model;
@@ -30,6 +31,22 @@ namespace ClientWPF.Views
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        private void exit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                Close();
+        }
+
+        private void exit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as PackIconMaterial).Foreground = Brushes.White;
+        }
+
+        private void exit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as PackIconMaterial).Foreground = Brushes.Black;
         }
     }
 }

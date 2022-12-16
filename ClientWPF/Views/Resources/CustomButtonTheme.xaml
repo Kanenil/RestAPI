@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="{x:Type Button}">
+    <Style TargetType="{x:Type Button}" x:Key="customButton">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="Fonts/#Montserrat"/>
         <Setter Property="FontWeight" Value="Light"/>

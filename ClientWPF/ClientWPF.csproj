@@ -21,8 +21,4 @@
     <Resource Include="Views\Images\cart.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Controls\" />
-  </ItemGroup>
-
 </Project>
