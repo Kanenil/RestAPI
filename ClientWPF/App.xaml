@@ -6,6 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="\Views\Resources\CustomButtonTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="\Views\Resources\CustomDataGridTemplate.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

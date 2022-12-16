@@ -25,5 +25,16 @@ namespace ClientWPF.Views
             InitializeComponent();
             DataContext = model;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

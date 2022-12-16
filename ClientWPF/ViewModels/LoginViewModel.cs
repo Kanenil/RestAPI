@@ -83,7 +83,7 @@ namespace ClientWPF.ViewModels
             }
             catch
             {
-                Message = "Error (400) Bad Request";
+                Message = "invalid password or email!";
             }
             return false;
         }

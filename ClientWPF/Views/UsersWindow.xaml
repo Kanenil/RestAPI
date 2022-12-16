@@ -4,10 +4,78 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientWPF.ViewModels"
-         d:DataContext="{d:DesignInstance Type=local:UserViewModel}"
+        xmlns:cmd="clr-namespace:ClientWPF.Commands"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:cntrl="clr-namespace:ClientWPF.Views.Controls"
+        d:DataContext="{d:DesignInstance Type=local:UserViewModel}"
         mc:Ignorable="d"
-        Title="UsersWindow" Height="450" Width="800">
+        Title="UsersWindow" Height="550" Width="880"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen"
+        Name="usersWND">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Margin="5,5">
+            <Button Background="Transparent"
+                    BorderThickness="0"
+                    Click="exit_Click">
+                <iconPacks:PackIconMaterial Kind="ExitToApp" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Foreground="Black"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" Grid.Row="1">
+            <Image Source="Images/cart.png" Width="150"/>
+            <TextBlock Text="Rest API"
+                       FontFamily="Fonts/#Montserrat"
+                       FontWeight="Light"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       FontSize="40"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2"
+                  Margin="20"
+                  ItemsSource="{Binding Users}"
+                  IsReadOnly="true"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Photo">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="50" 
+                               Height="50"
+                               Source="{Binding Photo}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}"/>
+                <DataGridTextColumn Header="Second Name" Binding="{Binding Path=SecondName}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
+                <DataGridTextColumn Header="Phone" Binding="{Binding Path=Phone}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
