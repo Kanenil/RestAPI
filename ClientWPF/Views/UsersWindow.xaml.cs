@@ -1,5 +1,4 @@
 ﻿using ClientWPF.ViewModels;
-using MahApps.Metro.IconPacks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,25 +16,14 @@ using System.Windows.Shapes;
 namespace ClientWPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UsersWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UsersWindow : Window
     {
-        public MainWindow(LoginViewModel model)
+        public UsersWindow(UserViewModel model)
         {
             InitializeComponent();
-            this.DataContext= model;
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                DragMove();
-        }
-
-        private void exit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            DataContext = model;
         }
     }
 }

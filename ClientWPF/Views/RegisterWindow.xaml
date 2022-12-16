@@ -3,10 +3,320 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClientWPF.Views"
+        xmlns:local="clr-namespace:ClientWPF.ViewModels" 
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        d:DataContext="{d:DesignInstance Type=local:RegisterViewModel}"
+        xmlns:cntrl="clr-namespace:ClientWPF.Views.Controls"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="800">
+        Height="550" Width="580"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen"
+        Name="registerWND">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Margin="5,5">
+            <Button Background="Transparent"
+                    BorderThickness="0"
+                    Click="exit_Click">
+                <iconPacks:PackIconMaterial Kind="ExitToApp" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Foreground="Black"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" Grid.Row="1">
+            <TextBlock Text="Registration"
+                       FontFamily="Fonts/#Montserrat"
+                       FontWeight="Light"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       FontSize="22"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border CornerRadius="50"
+                        BorderThickness="2"
+                        BorderBrush="#f083da"
+                        Height="100"
+                        Width="100">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding Path=Photo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border.Background>
+                    <Button Background="Transparent"
+                            BorderThickness="0"
+                            Command=""/>
+                </Border>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" Margin="10,0">
+                        <TextBlock FontFamily="Fonts/#Montserrat"
+                                   FontWeight="Light"
+                                   Text="First Name"
+                                   FontSize="20"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   Height="25"
+                                   Margin="0,5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox FontFamily="Fonts/#Montserrat"
+                                 FontWeight="Light"
+                                 Text="{Binding Path=FirstName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 Foreground="White"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Width="200"
+                                 HorizontalContentAlignment="Left"
+                                 Opacity="0.5"
+                                 Height="25"/>
+                            <iconPacks:PackIconMaterial Kind="Account" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"/>
+                        </StackPanel>
+                        <Border Width="250"
+                            Height="2"
+                            Background="White"
+                            Opacity="0.5"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                        <TextBlock FontFamily="Fonts/#Montserrat"
+                                   FontWeight="Light"
+                                   Text="Second Name"
+                                   FontSize="20"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   Height="25"
+                                   Margin="0,5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox FontFamily="Fonts/#Montserrat"
+                                 FontWeight="Light"
+                                 Text="{Binding Path=SecondName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 Foreground="White"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Width="200"
+                                 HorizontalContentAlignment="Left"
+                                 Opacity="0.5"
+                                 Height="25"/>
+                            <iconPacks:PackIconMaterial Kind="Account" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"/>
+                        </StackPanel>
+                        <Border Width="250"
+                            Height="2"
+                            Background="White"
+                            Opacity="0.5"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontFamily="Fonts/#Montserrat"
+                                   FontWeight="Light"
+                                   Text="Email"
+                                   FontSize="20"
+                                   HorizontalAlignment="Right"
+                                   Foreground="White"
+                                   Height="25"
+                                   Margin="45,5"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox FontFamily="Fonts/#Montserrat"
+                                 FontWeight="Light"
+                                 Text="{Binding Path=Email,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 Foreground="White"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Width="200"
+                                 HorizontalContentAlignment="Left"
+                                 Opacity="0.5"
+                                 Height="25"/>
+                            <iconPacks:PackIconMaterial Kind="At" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"/>
+                        </StackPanel>
+                        <Border Width="250"
+                            Height="2"
+                            Background="White"
+                            Opacity="0.5"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1" Grid.Row="2" Margin="0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontFamily="Fonts/#Montserrat"
+                                   FontWeight="Light"
+                                   Text="Phone"
+                                   FontSize="20"
+                                   HorizontalAlignment="Right"
+                                   Foreground="White"
+                                   Height="25"
+                                   Margin="40,5"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox FontFamily="Fonts/#Montserrat"
+                                 FontWeight="Light"
+                                 Text="{Binding Path=Phone,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 Foreground="White"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Width="200"
+                                 HorizontalContentAlignment="Left"
+                                 Opacity="0.5"
+                                 Height="25"/>
+                            <iconPacks:PackIconMaterial Kind="Phone" 
+                                            VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" 
+                                            Foreground="White"/>
+                        </StackPanel>
+                        <Border Width="250"
+                            Height="2"
+                            Background="White"
+                            Opacity="0.5"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1" Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontFamily="Fonts/#Montserrat"
+                                   FontWeight="Light"
+                                   Text="Password"
+                                   FontSize="20"
+                                   HorizontalAlignment="Right"
+                                   Foreground="White"
+                                   Height="25"
+                                   Margin="40,5"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <cntrl:BindablePasswordBox 
+                                Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                Height="25"
+                                Width="200"/>
+                            <iconPacks:PackIconMaterial Kind="FormTextboxPassword" 
+                                                VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" 
+                                                Foreground="White"/>
+                        </StackPanel>
+                        <Border Width="250"
+                            Height="2"
+                            Background="White"
+                            Opacity="0.5"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1" Grid.Row="4" Margin="0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontFamily="Fonts/#Montserrat"
+                                   FontWeight="Light"
+                                   Text="Confirm Password"
+                                   FontSize="20"
+                                   HorizontalAlignment="Right"
+                                   Foreground="White"
+                                   Height="25"
+                                   Margin="10,5"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <cntrl:BindablePasswordBox 
+                                Password="{Binding ConfirmPassword, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                Height="25"
+                                Width="200"/>
+                            <iconPacks:PackIconMaterial Kind="FormTextboxPassword" 
+                                                VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" 
+                                                Foreground="White"/>
+                        </StackPanel>
+                        <Border Width="250"
+                            Height="2"
+                            Background="White"
+                            Opacity="0.5"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+            
+            <TextBlock FontFamily="Fonts/#Montserrat"
+                       FontWeight="Light"
+                       FontSize="16"
+                       Margin="63 20"
+                       Foreground="Red"
+                       Text="{Binding Path=Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource customButton}" 
+                        Content="REGISTER" 
+                        Width="100" 
+                        Height="40" 
+                        Margin="160 0 60 0"
+                        Command="{Binding Login}"
+                        CommandParameter="{Binding ElementName=loginWND}"/>
+                <Button Style="{StaticResource customButton}" 
+                        Content="CANCEL" 
+                        Width="100" 
+                        Height="40"                        
+                        Command="{Binding Login}"
+                        CommandParameter="{Binding ElementName=loginWND}"/>
+
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Window>

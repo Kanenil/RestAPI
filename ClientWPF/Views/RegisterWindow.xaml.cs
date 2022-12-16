@@ -20,10 +20,21 @@ namespace ClientWPF.Views
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        public RegisterWindow(UserViewModel model)
+        public RegisterWindow(RegisterViewModel model)
         {
             InitializeComponent();
             DataContext = model;
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
