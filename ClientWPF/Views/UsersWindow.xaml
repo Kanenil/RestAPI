@@ -7,6 +7,7 @@
         xmlns:cmd="clr-namespace:ClientWPF.Commands"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:cntrl="clr-namespace:ClientWPF.Views.Controls"
+        xmlns:cnv="clr-namespace:ClientWPF.Views.Converter"
         d:DataContext="{d:DesignInstance Type=local:UserViewModel}"
         mc:Ignorable="d"
         Title="UsersWindow" Height="550" Width="880"
@@ -15,6 +16,9 @@
         MouseDown="Window_MouseDown"
         WindowStartupLocation="CenterScreen"
         Name="usersWND">
+    <Window.Resources>
+        <cnv:Base64ImageConverter x:Key="Base64ImageConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -64,15 +68,15 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Width="50" 
-                               Height="50"
-                               Source="{Binding Photo}"/>
+                                   Height="50"
+                                   Source="{Binding Photo, Converter={StaticResource Base64ImageConverter}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}"/>
-                <DataGridTextColumn Header="Second Name" Binding="{Binding Path=SecondName}"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
-                <DataGridTextColumn Header="Phone" Binding="{Binding Path=Phone}"/>
+                <DataGridTextColumn Width="*" Header="First Name" Binding="{Binding Path=FirstName}"/>
+                <DataGridTextColumn Width="*" Header="Second Name" Binding="{Binding Path=SecondName}"/>
+                <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Path=Email}"/>
+                <DataGridTextColumn Width="*" Header="Phone" Binding="{Binding Path=Phone}"/>
 
             </DataGrid.Columns>
         </DataGrid>
