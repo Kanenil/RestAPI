@@ -36,9 +36,7 @@ namespace ClientWPF.ViewModels
                     Users = null;
                     var users = JsonConvert.DeserializeObject<List<UserDTO>>(data);
                     foreach (var user in users)
-                    {
                         user.Photo = ConvertImageURLToBase64($"{url}{user.Photo}");
-                    }
                     Users = users;
                 }
             }

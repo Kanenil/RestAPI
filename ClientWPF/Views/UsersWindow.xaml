@@ -10,7 +10,7 @@
         xmlns:cnv="clr-namespace:ClientWPF.Views.Converter"
         d:DataContext="{d:DesignInstance Type=local:UserViewModel}"
         mc:Ignorable="d"
-        Title="UsersWindow" Height="550" Width="880"
+        Title="UsersWindow" Height="650" Width="880"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Transparent"
         MouseDown="Window_MouseDown"
@@ -67,8 +67,8 @@
                 <DataGridTemplateColumn Header="Photo">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Width="50" 
-                                   Height="50"
+                            <Image Width="100" 
+                                   Height="100"
                                    Source="{Binding Photo, Converter={StaticResource Base64ImageConverter}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
