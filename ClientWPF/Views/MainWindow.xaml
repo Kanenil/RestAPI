@@ -78,17 +78,8 @@
                     Opacity="0.5"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                <cntrl:BindablePasswordBox FontFamily="Fonts/#Montserrat"
-                             FontWeight="Light"
+                <cntrl:BindablePasswordBox 
                              Password="{Binding Path=Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             Foreground="White"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Width="235"
-                             HorizontalContentAlignment="Left"
-                             Opacity="0.5"
                              Height="25"
                              Margin="63 0 0 0"/>
                 <iconPacks:PackIconMaterial Kind="FormTextboxPassword" 
